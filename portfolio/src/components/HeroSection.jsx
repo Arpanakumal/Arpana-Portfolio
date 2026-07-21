@@ -19,7 +19,7 @@ export const HeroSection = ()=>{
 
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-aito opacity-0 animate-fade-in-delay-3">
-yahooo
+                    I specialize in Front-end Development.
                 </p>
                 <div className="pt- opacity-0 animate-fade-in-delay-4">
                    <a href="#projects" className="cosmic-button">  View My Work</a>

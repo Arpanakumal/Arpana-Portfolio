@@ -14,12 +14,14 @@ export const AboutMe =()=>{
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div className="space-y-6">
-                        <h3>yahoo wassup gang</h3>
+                        <h3>I'm a BCA student  who enjoys building and designing web applications and solving problems through code.
+                             I work with React to create responsive and scalable applications.</h3>
                         <p className="text-muted-foreground">
-                            yes i am ur one n onnly 
+                            I am passionate about learning new technologies, improving my development skills, and building projects that combine clean design with practical functionality.
+                             
                         </p>
                         <p className="text-muted-foreground">
-                            i believe i could flyyyy 
+                            Currently, I am exploring backend development and  data engineering.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
@@ -27,9 +29,14 @@ export const AboutMe =()=>{
                                 {""}
                                 Get In Touch
                             </a>
-                            <a href="" className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300 ">
-                            Download CV
-                            </a>
+                           <a
+  href="/Arpana_CV.pdf"
+  download
+  className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
+>
+  Download CV
+</a>
+
 
                         </div>
                     </div>
@@ -75,10 +82,10 @@ export const AboutMe =()=>{
 
                                 </div>
                                   <div className="text-left">
-                                    <h4 className="font-semibold text-lg">Project Management</h4>
+                                    <h4 className="font-semibold text-lg">Database and Data Engineering</h4>
                                     {""}
                                     <p className="text-muted-foreground">
-                                       Leading projects from conceptionto completion with agile methodologies
+                                        Working with databases like MongoDB and exploring data processing, storage, and data engineering concepts.
                                     </p>
 
                                 </div>
