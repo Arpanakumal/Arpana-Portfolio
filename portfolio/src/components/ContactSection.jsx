@@ -21,33 +21,42 @@ export const ContactSection = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  const formData = {
-    name: e.target.name.value,
-    email: e.target.email.value,
-    message: e.target.message.value,
-  };
+  setIsSubmitting(true);
 
-const response = await fetch(
-  `${API_URL}/api/contact`,
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-  }
-);
+  try {
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      message: e.target.message.value,
+    };
 
-  const data = await response.json();
+    const response = await fetch(
+      `${API_URL}/api/contact`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
 
-  if (data.success) {
-    alert("Message sent successfully!");
-    e.target.reset();
-  } else {
-    alert("Failed to send message");
+    const data = await response.json();
+
+    if (data.success) {
+      alert("Message sent successfully!");
+      e.target.reset();
+    } else {
+      alert("Failed to send message");
+    }
+
+  } catch(error) {
+    console.log(error);
+    alert("Server error");
+  } finally {
+    setIsSubmitting(false);
   }
 };
-
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
