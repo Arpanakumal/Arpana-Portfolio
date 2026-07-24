@@ -7,12 +7,15 @@ require("dotenv").config();
 
 
 app.use(cors({
-  origin: "https://your-portfolio.vercel.app",
-  methods: ["POST"],
+    origin: [
+        "http://localhost:5173",
+        "https://arpana-portfolio-six.vercel.app"
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
 }));
-const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+
 app.use(express.json());
 
 
