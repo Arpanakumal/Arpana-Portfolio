@@ -64,11 +64,19 @@ app.post("/api/contact", async (req, res) => {
 
         if (process.env.EMAIL_HOST) {
             transporterOptions.host = process.env.EMAIL_HOST;
-            transporterOptions.port = process.env.EMAIL_PORT ? parseInt(process.env.EMAIL_PORT, 10) : 465;
+            // default to 587 which is commonly allowed for SMTP submission
+            transporterOptions.port = process.env.EMAIL_PORT ? parseInt(process.env.EMAIL_PORT, 10) : 587;
             transporterOptions.secure = (process.env.EMAIL_SECURE === "true") || transporterOptions.port === 465;
         } else {
             transporterOptions.service = process.env.EMAIL_SERVICE || "gmail";
         }
+
+        // Log non-sensitive transporter configuration for debugging
+        console.log("SMTP config:", {
+            host: transporterOptions.host || transporterOptions.service,
+            port: transporterOptions.port,
+            secure: transporterOptions.secure
+        });
 
         transporterOptions.auth = {
             user: process.env.EMAIL_USER,
