@@ -4,9 +4,7 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const app = express();
-
 const PORT = process.env.PORT || 5000;
-
 
 app.use(cors({
     origin: [
@@ -21,19 +19,21 @@ app.use(cors({
 
 app.use(express.json());
 
-
 app.get("/", (req, res) => {
     res.json({
         success: true,
-        message: "Arpana Portfolio backend is running",
+        message: "Arpana Portfolio backend is running"
     });
 });
-
 
 app.post("/api/contact", async (req, res) => {
     const { name, email, message } = req.body;
 
     try {
+        console.log("Request received:", req.body);
+        console.log("EMAIL_USER:", process.env.EMAIL_USER);
+        console.log("EMAIL_PASS Loaded:", !!process.env.EMAIL_PASS);
+
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
@@ -42,8 +42,10 @@ app.post("/api/contact", async (req, res) => {
             },
         });
 
+        await transporter.verify();
+        console.log("SMTP connection successful");
 
-        await transporter.sendMail({
+        const info = await transporter.sendMail({
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
             subject: `New Portfolio Message from ${name}`,
@@ -56,22 +58,23 @@ ${message}
             `,
         });
 
+        console.log("Email sent:", info.response);
 
-        res.json({
+        res.status(200).json({
             success: true,
-            message: "Email sent",
+            message: "Email sent successfully"
         });
 
     } catch (error) {
-        console.log(error);
+        console.error("========== EMAIL ERROR ==========");
+        console.error(error);
 
         res.status(500).json({
             success: false,
-            message: "Email failed",
+            message: error.message
         });
     }
 });
-
 
 app.listen(PORT, () => {
     console.log(`Backend running on port ${PORT}`);
