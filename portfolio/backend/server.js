@@ -11,12 +11,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
     origin: [
         "http://localhost:5173",
-        "https://arpana-portfolio-six.vercel.app"
+        "https://arpana-portfolio-six.vercel.app",
+        "https://arpana-portfolio-git-main-arpanakumals-projects.vercel.app"
     ],
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
+    credentials: true
 }));
-
+app.options("*", cors());
 app.use(express.json());
 
 
