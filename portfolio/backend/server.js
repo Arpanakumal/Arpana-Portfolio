@@ -10,6 +10,14 @@ app.use(cors());
 app.use(express.json());
 
 
+app.get("/", (req, res) => {
+    res.json({
+        success: true,
+        message: "Arpana Portfolio backend is running",
+    });
+});
+
+
 app.post("/api/contact", async (req, res) => {
     const { name, email, message } = req.body;
 
