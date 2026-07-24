@@ -12,7 +12,7 @@ app.use(cors({
     origin: [
         "http://localhost:5173",
         "https://arpana-portfolio-six.vercel.app",
-        "https://arpana-portfolio-1l5ovat3m-arpanakumals-projects.vercel.app/"
+        "https://arpana-portfolio-1l5ovat3m-arpanakumals-projects.vercel.app"
     ],
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
