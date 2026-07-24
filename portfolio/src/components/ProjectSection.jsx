@@ -9,7 +9,7 @@ const projects = [
       "Online platform that offers services like cleaning, plumbing, light installations, etc.",
     image: "/projects/Service.png",
     tags: ["MongoDB", "Express.js", "React.js", "Node.js"],
-    demoUrl: "#",
+    demoUrl: "https://react-app-homeease-client.vercel.app/",
     githubUrl: "https://github.com/Arpanakumal/React-app",
   },
   {

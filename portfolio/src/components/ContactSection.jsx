@@ -12,6 +12,9 @@ import { useToast } from "../hooks/toast";
 import { useState } from "react";
 
 export const ContactSection = () => {
+
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -24,16 +27,16 @@ const handleSubmit = async (e) => {
     message: e.target.message.value,
   };
 
-  const response = await fetch(
-    "http://localhost:5000/api/contact",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    }
-  );
+const response = await fetch(
+  `${API_URL}/api/contact`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  }
+);
 
   const data = await response.json();
 
@@ -123,11 +126,11 @@ const handleSubmit = async (e) => {
 
           <div
             className="bg-card p-8 rounded-lg shadow-xs"
-            onSubmit={handleSubmit}
+          
           >
             <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
 
-            <form className="space-y-6">
+            <form className="space-y-6"   onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="name"

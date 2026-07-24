@@ -3,7 +3,13 @@ const cors = require("cors");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
-const app = express();
+
+
+
+app.use(cors({
+  origin: "https://your-portfolio.vercel.app",
+  methods: ["POST"],
+}));
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
