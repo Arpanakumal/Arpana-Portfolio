@@ -41,14 +41,13 @@ export const ContactSection = () => {
       alert("Message sent successfully!");
       e.target.reset();
 
-   } catch (error) {
-  console.error(error);
-
-  res.status(500).json({
-    success: false,
-    message: error.message,
-  });
-   }}
+    } catch (error) {
+      console.error(error);
+      alert(error.message || "Server error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
