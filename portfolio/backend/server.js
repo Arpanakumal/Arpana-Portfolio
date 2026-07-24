@@ -3,7 +3,9 @@ const cors = require("cors");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
+const app = express();
 
+const PORT = process.env.PORT || 5000;
 
 
 app.use(cors({
@@ -11,10 +13,9 @@ app.use(cors({
         "http://localhost:5173",
         "https://arpana-portfolio-six.vercel.app"
     ],
-    methods: ["GET", "POST"],
-    credentials: true
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
 }));
-
 
 app.use(express.json());
 
